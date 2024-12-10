@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+        /* Body styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url("{% static 'bk.jpg' %}") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form styling */
+        form {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Heading styling */
+        h2 {
+            margin-bottom: 20px;
+            color: #4A00E0;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Input styling */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #4A00E0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #4A00E0, #8E2DE2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #8E2DE2, #4A00E0);
+        }
+
+        /* Button active effect */
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="/signup/">
+        {% csrf_token %}
+        <h2>Signup</h2>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+        
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+        
+        <button type="submit">Signup</button>
+    </form>
+    
+</body>
+</html>

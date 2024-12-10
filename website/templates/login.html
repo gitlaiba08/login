@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+        /* Styling for the body */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url("{% static 'bk2.jpg' %}") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styling for the form */
+        form {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center; /* Ensures elements inside the form align properly */
+        }
+
+        /* Styling for the heading */
+        h2 {
+            margin-bottom: 20px;
+            color: #4A00E0;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        /* Styling for the labels */
+        label {
+            display: block; /* Ensures labels are placed above inputs */
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            text-align: left; /* Aligns labels to the left */
+        }
+
+        /* Styling for the inputs */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%; /* Makes input fields span the full width */
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #4A00E0;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box; /* Includes padding within the width */
+        }
+
+        /* Styling for the button */
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #4A00E0, #8E2DE2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        /* Button hover and active effects */
+        button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #8E2DE2, #4A00E0);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Styling for error messages */
+        .messages p {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="/login/">
+        {% csrf_token %}
+        <h2>Login</h2>
+
+        <!-- Display messages -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Username input -->
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+
+        <!-- Password input -->
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+
+        <!-- Submit button -->
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
